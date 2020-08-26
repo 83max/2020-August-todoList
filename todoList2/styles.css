@@ -1,0 +1,239 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+    font-size: 20px;
+}
+
+#app{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../todoList2/src/image1.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.todo{
+    padding: 20px;
+    position: absolute;
+    top: 80px;
+    /*background-color: #fafcfb;*/
+    background-color: rgba(250,252,252, 1);
+    /*height: 60%;*/
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.greyOverlay{
+    background-color: rgba(255,255,255, 0.7);
+}
+
+.tasklist{
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.div-todo-input{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.todo-input{
+    border: none;
+    border-bottom: 1px dashed grey;
+    width: 80%;
+    font-size: 20px;
+    background-color: #eee0;
+}
+
+.disabledInput{
+    pointer-events: none;
+}
+
+.todo-input:focus{
+    outline: 0;
+}
+
+.div-count{
+    display: flex;
+    padding-bottom: 15px;
+
+}
+
+.line-through-count{
+    flex-grow: 1;
+    border-bottom: 1px solid #ebeae8;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.lineThroughShow{
+    border-bottom: 1px solid #eee0;
+}
+
+.count{
+}
+
+
+.fa-trash-o{
+
+}
+
+/*Delete Yes / No*/
+
+.deleteYesNo {
+    position: absolute;
+    z-index: 1;
+    top: 170px;
+    text-align: center;
+    padding: 20px;
+    background: #fafcfb;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnYes {
+    height: 30px;
+    width: 50px;
+    margin-right: 10px;
+
+}
+
+.btnNo {
+    height: 30px;
+    width: 50px;
+    margin-left: 10px;
+}
+
+.doNotHaveTasks {
+    text-align: center;
+    color: #696969;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.imageAllDone{
+    text-align: center;
+    margin: 5px 0;
+}
+
+.allDone{
+    text-align: center;
+    color: #696969;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.checkboxLabel{
+    position: relative;
+    cursor: pointer;
+}
+
+.checkboxLabel:before{
+    position: absolute;
+    left: -24px;
+    content: "";
+    background-color: #eee0;
+    border: 2px solid #aabfb0;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.checkboxLabel:hover:before{
+    background-color:#e1e8e3;
+}
+
+.checkboxLabel:after{
+    position: absolute;
+    left: -24px;
+    content: "";
+    background-color: #aabfb0;
+    border: 2px solid #aabfb0;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transform: scale(0);
+}
+
+.checkboxClass{
+    position: absolute;
+    left: -9999px;
+}
+
+.checkboxClass:checked + .checkboxLabel:after{
+    transform: scale(1);
+}
+
+.disabledCheckbox{
+    pointer-events: none;
+}
+
+.disableDeleteBtn{
+    pointer-events: none;
+}
+
+.labelRemainingTodo{
+    cursor: auto;
+    max-width: 80%;
+    white-space: pre-line;
+}
+
+.labelCompletedTodo{
+    max-width: 80%;
+}
+
+.showMore{
+    cursor: pointer;
+    text-align: center;
+    font-size: small;
+}
+
+.showMore:hover{
+    color: #aabfb0;
+}
+
+.showLess{
+    cursor: pointer;
+    text-align: center;
+    font-size: small;
+}
+
+.showLess:hover{
+    color: #aabfb0;
+}
+.percentageGreen{
+    color: green;
+}
+
+.percentageOrange{
+    color: orange;
+}
+
+.percentageRed{
+    color: red;
+}
+
+.percentageBlack{
+    color: black;
+}

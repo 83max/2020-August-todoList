@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <div class="deleteYesNo" v-if="yesNoShow">
+        <p>Are you sure you want to delete "{{ deleteInput }}"?</p>
+        <span>
+            <button class="btnYes" v-on:click="yesBtn">Yes</button>
+            <span></span>
+            <button class="btnNo" v-on:click="noBtn">No</button>
+        </span>
+    </div>
+
+    <div class="todo" v-bind:class="{ greyOverlay: isGreyOverlay }">
+
+        <h2 class="tasklist">Task list</h2>
+
+        <p class="doNotHaveTasks" v-if="remainingTodos.length == 0 && completedTodos.length == 0">You don't have tasks to do.</p>
+        <p class="imageAllDone" v-if="remainingTodos.length == 0 && completedTodos.length !== 0"> <img src="src/fireworks32.png" alt=""> </p>
+        <p class="allDone" v-if="remainingTodos.length == 0 && completedTodos.length !== 0">All done!</p>
+
+            <ul class="ulRemaining">
+                <li class="liRemaining" v-for="out in remainingTodos" :key="out.id">
+                    <span class="checkboxContainer"><input v-bind:id="out.id" class="checkboxClass" type="checkbox" v-model="out.show"> <label v-bind:class="{ disabledCheckbox: isDisabledCheckbox }" class="checkboxLabel" v-bind:for="out.id"> </label> </span>
+                    <label v-bind:id="out.id" class="labelRemainingTodo" ref="remainingTodoRef" v-bind:contenteditable="isContentEditable" v-on:dblclick="editTodoDblClick(out.id)" v-on:keydown.enter="editTextInLi"> {{ out.text }} </label>
+                    <span v-bind:class=" {disableDeleteBtn: isDisableDeleteBtn} " class="fa fa-trash-o" aria-hidden="true" v-on:click="deleteTodo(out.id)"></span>
+                </li>
+            </ul>
+
+        <div class="div-todo-input">
+            <input v-on:keyup.enter="addTodo" ref="inputRef" class="todo-input" type="text" placeholder="New task..." v-bind:class=" { disabledInput: isDisabledInput } ">
+        </div>
+
+        <div class="div-count">
+
+            <div class="line-through-count" v-bind:class=" {lineThroughShow: isLineThroughShow } " v-if="remainingTodos.length !== 0 || completedTodos.length !== 0"> </div>
+            <div class="count" v-if="remainingTodos.length !== 0 || completedTodos.length !== 0">{{completedTodos.length}} / {{remainingTodos.length}}
+                (<span v-bind:class="`${ percentageCalcColor === 0 ? 'percentageBlack' : percentageCalcColor === 100 ? 'percentageGreen' : percentageCalcColor >= 50 ? 'percentageOrange' : percentageCalcColor < 50 ? 'percentageRed' : 'percentageBlack'}`" v-bind:style="{ color: isColor }">{{percentageCalcColor}}</span>% done)
+            </div>
+
+
+        </div>
+
+        <ul>
+            <li v-if="!clickedMore" v-for="out in hideTodos" :key="out.id">
+                <span class="checkboxContainer"><input v-bind:id="out.id" class="checkboxClass" type="checkbox" v-model="out.show"> <label v-bind:class="{ disabledCheckbox: isDisabledCheckbox }" class="checkboxLabel" v-bind:for="out.id"> </label> </span>
+                <label class="labelCompletedTodo" v-bind:style="lineThrough"> {{ out.text }} </label>
+                <span v-bind:class=" {disableDeleteBtn: isDisableDeleteBtn} " class="fa fa-trash-o" aria-hidden="true" v-on:click="deleteTodo(out.id)"></span>
+            </li>
+
+            <li v-if="clickedMore" v-for="out in completedTodos" :key="out.id">
+                <span class="checkboxContainer"><input v-bind:id="out.id" class="checkboxClass" type="checkbox" v-model="out.show"> <label v-bind:class="{ disabledCheckbox: isDisabledCheckbox }" class="checkboxLabel" v-bind:for="out.id"> </label> </span>
+                <label class="labelCompletedTodo" v-bind:style="lineThrough"> {{ out.text }} </label>
+                <span v-bind:class=" {disableDeleteBtn: isDisableDeleteBtn} " class="fa fa-trash-o" aria-hidden="true" v-on:click="deleteTodo(out.id)"></span>
+            </li>
+
+        </ul>
+
+        <p v-if="showOnlyFiveCompletedTodosBtn && !clickedMore" v-on:click="showMoreThanFiveTodos" class="showMore">Show more...</p>
+<!--        <p v-if="showLessBtn" v-on:click="showLessFunction" class="showLess">Show less...</p>-->
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
