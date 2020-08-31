@@ -98,7 +98,7 @@ new Vue ({
 		
 	    const localStorageSetEcrypt = sha256("localStorageSet");
 		
-	    const localStorageSetEcryptRound = localStorageSetEcrypt.Math.round(Math.random() * 100000000000000000000);
+	    const localStorageSetEcryptRound = localStorageSetEcrypt++;
 		
 	    const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
 	    const myURLhash = myUrl.hash = localStorageSetEcryptRound;
