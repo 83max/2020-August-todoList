@@ -93,20 +93,12 @@ new Vue ({
             });
 
             this.$refs.inputRef.value = "";
-            
-            window.addEventListener('hashchange', function(){
-		    localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
-		    const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
+		
+		localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
+		
+		const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
 	        const myURLhash = myUrl.hash = Math.round(Math.random() * 100000000000000000000);
-	        window.location = myUrl + myURLhash;
-
-	    });
-		
-// 		localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
-		
-// 		const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
-// 	        const myURLhash = myUrl.hash = Math.round(Math.random() * 100000000000000000000);
-// 	        window.location = myUrl + myURLhash;		
+	        window.location = myUrl + myURLhash;		
 	    
         },
 
