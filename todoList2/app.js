@@ -106,7 +106,7 @@ new Vue ({
 
                 const encrypt = sha256(returnlocalStorageSet);
 
-                const myUrl = new URL ("file:///Users/max/Code/todoList2/index.html");
+                const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
                 const myURLhash = myUrl.hash = encrypt + Math.round(Math.random() * 100000000000000000000);
                 window.location = myUrl + myURLhash;
 	    
