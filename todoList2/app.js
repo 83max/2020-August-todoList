@@ -95,10 +95,12 @@ new Vue ({
             this.$refs.inputRef.value = "";
 		
 		
-		localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
+		const localStorageSet = localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
+		
+		const ecode = sha256(localStorageSet);
 		
 		const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
-	        const myURLhash = myUrl.hash = Math.round(Math.random() * 100000000000000000000);
+	        const myURLhash = myUrl.hash = ecode;
 	        window.location = myUrl + myURLhash;
 	    
         },
