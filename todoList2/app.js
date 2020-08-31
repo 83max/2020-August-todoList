@@ -99,6 +99,8 @@ new Vue ({
 		
 		const ecode = sha256(localStorageSet);
 		
+		console.log(localStorageSet);
+		
 		const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
 	        const myURLhash = myUrl.hash = ecode;
 	        window.location = myUrl + myURLhash;
