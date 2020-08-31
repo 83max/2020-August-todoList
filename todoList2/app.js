@@ -96,8 +96,10 @@ new Vue ({
             
             const localStorageSet = localStorage.setItem("todoArrayShow", JSON.stringify(this.todoArrayShow));
 		
+	    const localStorageSetEcrypt = sha256("localStorageSet");	
+		
 	    const myUrl = new URL ("https://2020-august-todo-list.vercel.app/");
-	    const myURLhash = myUrl.hash = sha256("localStorageSet");
+	    const myURLhash = myUrl.hash = localStorageSetEcrypt;
 	    window.location = myUrl + myURLhash;
         },
 
